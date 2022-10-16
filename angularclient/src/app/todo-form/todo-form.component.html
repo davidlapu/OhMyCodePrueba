@@ -1,0 +1,43 @@
+<div class="card my-5">
+  <div class="card-body">
+    <form #todoForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="form-group mb-3">
+        <label class="form-label" for="user">User</label>
+        <select [(ngModel)]="todoDto.userId" aria-label="User" class="form-select" id="user" name="user" required>
+          <option *ngFor="let item of users" [value]="item.id">{{item.username}}</option>
+        </select>
+      </div>
+
+      <div class="form-group mb-3">
+        <label class="form-label" for="title">Title</label>
+        <input #title="ngModel" [(ngModel)]="todoDto.title"
+               class="form-control"
+               id="title"
+               maxlength="199"
+               name="title"
+               placeholder="Title" required
+               type="text">
+      </div>
+      <div *ngIf="title.invalid && (title.dirty || title.touched)"
+           class="alert alert-danger">
+        <div *ngIf="title.errors?.['required']">
+          Title is required.
+        </div>
+        <div *ngIf="title.errors?.['maxlength']">
+          Title max length is 199 characters.
+        </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <select [(ngModel)]="todoDto.completed" aria-label="Status" class="form-select" name="completed" required>
+          <option value="false">Not completed</option>
+          <option value="true">Completed</option>
+        </select>
+      </div>
+
+      <button [disabled]="!todoForm.form.valid" class="btn btn-primary"
+              type="submit">Submit
+      </button>
+    </form>
+  </div>
+</div>

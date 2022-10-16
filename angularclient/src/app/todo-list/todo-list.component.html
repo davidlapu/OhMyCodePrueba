@@ -1,0 +1,69 @@
+<div class="card my-5">
+  <div class="card-body">
+    <div class="input-group mb-3">
+      <input (input)="page=0; reloadTodos()"
+             [(ngModel)]="filters.title"
+             class="form-control"
+             name="titleFilter"
+             placeholder="Título"
+             type="text">
+      <input (input)="page=0; reloadTodos()"
+             [(ngModel)]="filters.username"
+             class="form-control"
+             name="usernameFilter"
+             placeholder="Username"
+             type="text">
+    </div>
+
+    <div class="input-group mb-3">
+      <button (click)="prevPage()" class="btn btn-primary" type="button">Prev</button>
+      <button (click)="nextPage()" class="btn btn-primary" type="button">Next</button>
+      <span> Page: {{page}}</span>
+    </div>
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th (click)="switchDirectionAndSort('title')" class="clickable" scope="col">Título</th>
+        <th (click)="switchDirectionAndSort('user.username')" class="clickable" scope="col">Username</th>
+        <th (click)="switchDirectionAndSort('user.address.country')" class="clickable" scope="col">País</th>
+        <th (click)="switchDirectionAndSort('completed')" class="clickable" scope="col">Completada</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Eliminar</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let todo of todos">
+        <td>{{ todo.title }}</td>
+        <td>{{ todo.user.username }}</td>
+        <td>{{ todo.user.address.country }}</td>
+        <td>{{ todo.completed ? 'Si' : 'No' }}</td>
+        <td>
+          <button (click)="openEditForm(todo)" class="btn btn-primary" type="button">Editar</button>
+        </td>
+        <td>
+          <button (click)="idTodoDelete = todo.id" class="btn btn-danger" data-bs-target="#deleteModal"
+                  data-bs-toggle="modal" type="button">Eliminar
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div aria-hidden="true" aria-labelledby="deleteModalLabel" class="modal fade" id="deleteModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure? This operation cannot be undone
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Close</button>
+        <button (click)="deleteTodo(idTodoDelete)" class="btn btn-danger" data-bs-dismiss="modal" type="button">DELETE
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
