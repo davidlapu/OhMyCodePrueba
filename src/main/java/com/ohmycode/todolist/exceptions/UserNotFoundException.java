@@ -1,4 +1,4 @@
-package com.ohmycode.todolist.Exceptions;
+package com.ohmycode.todolist.exceptions;
 
 public class UserNotFoundException extends RuntimeException {
     public UserNotFoundException() {

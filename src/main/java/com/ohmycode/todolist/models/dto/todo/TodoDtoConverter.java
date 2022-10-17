@@ -1,6 +1,6 @@
 package com.ohmycode.todolist.models.dto.todo;
 
-import com.ohmycode.todolist.Exceptions.UserNotFoundException;
+import com.ohmycode.todolist.exceptions.UserNotFoundException;
 import com.ohmycode.todolist.models.entities.Todo;
 import com.ohmycode.todolist.models.entities.User;
 import com.ohmycode.todolist.services.UserService;
