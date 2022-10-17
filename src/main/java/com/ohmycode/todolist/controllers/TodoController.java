@@ -20,7 +20,7 @@ public class TodoController {
     @GetMapping("/todo")
     public List<Todo> getTodos(@RequestParam(defaultValue = "0") int page,
                                @RequestParam(defaultValue = "title") String sortingParam,
-                               @RequestParam(defaultValue = "asc") String sortingDirection,
+                               @RequestParam(defaultValue = "desc") String sortingDirection,
                                @RequestParam Optional<String> title,
                                @RequestParam Optional<String> username) {
 

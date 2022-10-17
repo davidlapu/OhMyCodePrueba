@@ -14,7 +14,7 @@ export class TodoListComponent implements OnInit {
   filters = {
     title: '', username: ''
   }
-  private sortingDirection: string = 'asc'
+  private sortingDirection: string = 'desc'
   private readonly PAGE_SIZE = 10;
 
   constructor(private todoService: TodoService, private router: Router) {
