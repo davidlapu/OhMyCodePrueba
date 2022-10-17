@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {TodoService} from "../service/todo.service";
-import {UserService} from "../service/user.service";
-import {User} from "../model/user";
-import {TodoDto} from "../model/todo-dto";
-import {Todo} from "../model/todo";
+import {TodoService} from "../../service/todo.service";
+import {UserService} from "../../service/user.service";
+import {User} from "../../model/user";
+import {TodoDto} from "../../model/todo-dto";
+import {Todo} from "../../model/todo";
 
 @Component({
   selector: 'app-todo-form',
