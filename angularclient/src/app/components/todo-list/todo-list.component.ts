@@ -15,6 +15,7 @@ export class TodoListComponent implements OnInit {
     title: '', username: ''
   }
   private sortingDirection: string = 'asc'
+  private readonly PAGE_SIZE = 10;
 
   constructor(private todoService: TodoService, private router: Router) {
   }
@@ -54,8 +55,10 @@ export class TodoListComponent implements OnInit {
   }
 
   nextPage() {
-    this.page = this.page + 1
-    this.reloadTodos()
+    if (this.todos.length == this.PAGE_SIZE) {
+      this.page = this.page + 1
+      this.reloadTodos()
+    }
   }
 
   prevPage() {
